@@ -1,0 +1,1366 @@
+@charset "UTF-8";/*
+ * jQuery FlexSlider v2.2.0
+ * http://www.woothemes.com/flexslider/
+ *
+ * Copyright 2012 WooThemes
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Contributing author: Tyler Smith (@mbmufffin)
+ */
+
+
+/* Browser Resets
+*********************************/
+
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;}
+
+/* Icon Fonts
+*********************************/
+/* Font-face Icons */
+@font-face {
+	font-family: 'flexslider-icon';
+	src:url('fonts/flexslider-icon.eot');
+	src:url('fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/flexslider-icon.woff') format('woff'),
+		url('fonts/flexslider-icon.ttf') format('truetype'),
+		url('fonts/flexslider-icon.svg#flexslider-icon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* FlexSlider Necessary Styles
+*********************************/
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {width: 100%; display: block;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+html[xmlns] .slides {display: block;}
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+/* FlexSlider Default Theme
+*********************************/
+.flexslider { margin: 0 0 60px; background: #fff; border: 4px solid #fff; position: relative; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); box-shadow: 0 1px 4px rgba(0,0,0,.2); zoom: 1; }
+.flex-viewport { max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease; }
+.loading .flex-viewport { max-height: 300px; }
+.flexslider .slides { zoom: 1; }
+.carousel li { margin-right: 5px; }
+
+/* Direction Nav */
+.flex-direction-nav {*height: 0;}
+.flex-direction-nav a  { text-decoration:none; display: block; width: 40px; height: 40px; margin: -20px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; color: rgba(0,0,0,0.8); text-shadow: 1px 1px 0 rgba(255,255,255,0.3); -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
+.flex-direction-nav .flex-prev { left: -50px; }
+.flex-direction-nav .flex-next { right: -50px; text-align: right; }
+.flexslider:hover .flex-prev { opacity: 0.7; left: 10px; }
+.flexslider:hover .flex-next { opacity: 0.7; right: 10px; }
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover { opacity: 1; }
+.flex-direction-nav .flex-disabled { opacity: 0!important; filter:alpha(opacity=0); cursor: default; }
+.flex-direction-nav a:before  { font-family: "flexslider-icon"; font-size: 40px; line-height:1; display: inline-block; content: '\f001'; }
+.flex-direction-nav a.flex-next:before  { content: '\f002'; }
+
+/* Pause/Play */
+.flex-pauseplay a { display: block; width: 20px; height: 20px; position: absolute; bottom: 5px; left: 10px; opacity: 0.8; z-index: 10; overflow: hidden; cursor: pointer; color: #000; }
+.flex-pauseplay a:before  { font-family: "flexslider-icon"; font-size: 20px; display: inline-block; content: '\f004'; }
+.flex-pauseplay a:hover  { opacity: 1; }
+.flex-pauseplay a.flex-play:before { content: '\f003'; }
+
+/* Control Nav */
+.flex-control-nav {width: 100%; position: absolute; bottom: -40px; text-align: center;}
+.flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
+.flex-control-paging li a {width: 11px; height: 11px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); -o-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); box-shadow: inset 0 0 3px rgba(0,0,0,0.3); }
+.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
+.flex-control-paging li a.flex-active { background: #000; background: rgba(0,0,0,0.9); cursor: default; }
+
+.flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
+.flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+.flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+.flex-control-thumbs img:hover {opacity: 1;}
+.flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+@media screen and (max-width: 860px) {
+  .flex-direction-nav .flex-prev { opacity: 1; left: 10px;}
+  .flex-direction-nav .flex-next { opacity: 1; right: 10px;}
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *
+
+
+
+ */
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 7, /home/marc/projects/personal_webs/brudiy/source/stylesheets/reset.css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+/* line 28, /home/marc/projects/personal_webs/brudiy/source/stylesheets/reset.css */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* line 32, /home/marc/projects/personal_webs/brudiy/source/stylesheets/reset.css */
+body {
+  line-height: 1; }
+
+/* line 35, /home/marc/projects/personal_webs/brudiy/source/stylesheets/reset.css */
+ol, ul {
+  list-style: none; }
+
+/* line 38, /home/marc/projects/personal_webs/brudiy/source/stylesheets/reset.css */
+blockquote, q {
+  quotes: none; }
+
+/* line 41, /home/marc/projects/personal_webs/brudiy/source/stylesheets/reset.css */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* line 46, /home/marc/projects/personal_webs/brudiy/source/stylesheets/reset.css */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@font-face {
+  font-family: "Archivo Narrow";
+  src: url("../fonts/archivonarrow-regular/archivonarrow-regular-webfont.eot");
+  src: url("../fonts/archivonarrow-regular/archivonarrow-regular-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/archivonarrow-regular/archivonarrow-regular-webfont.woff") format('woff'), url("../fonts/archivonarrow-regular/archivonarrow-regular-webfont.ttf") format('truetype'), url("../fonts/archivonarrow-regular/archivonarrow-regular-webfont.svg") format('svg'); }
+@font-face {
+  font-family: "Archivo Narrow";
+  src: url("../fonts/archivonarrow-bold/archivonarrow-bold-webfont.eot");
+  src: url("../fonts/archivonarrow-bold/archivonarrow-bold-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/archivonarrow-bold/archivonarrow-bold-webfont.woff") format('woff'), url("../fonts/archivonarrow-bold/archivonarrow-bold-webfont.ttf") format('truetype'), url("../fonts/archivonarrow-bold/archivonarrow-bold-webfont.svg") format('svg');
+  font-weight: bold; }
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../fonts/bebasneue/bebasneue-webfont.eot");
+  src: url("../fonts/bebasneue/bebasneue-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/bebasneue/bebasneue-webfont.woff") format('woff'), url("../fonts/bebasneue/bebasneue-webfont.ttf") format('truetype'), url("../fonts/bebasneue/bebasneue-webfont.svg") format('svg'); }
+@font-face {
+  font-family: "Titillium Web";
+  src: url("../fonts/titilliumweb-regular/titilliumweb-regular-webfont.eot");
+  src: url("../fonts/titilliumweb-regular/titilliumweb-regular-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/titilliumweb-regular/titilliumweb-regular-webfont.woff") format('woff'), url("../fonts/titilliumweb-regular/titilliumweb-regular-webfont.ttf") format('truetype'), url("../fonts/titilliumweb-regular/titilliumweb-regular-webfont.svg") format('svg'); }
+/* line 19, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+html {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-top: 6px solid #383838; }
+
+/* line 24, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+#colophon, #wrapper {
+  max-width: 61.25em;
+  margin: auto; }
+
+/* line 29, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.navigation .menu-meta {
+  float: left; }
+  /* line 31, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .navigation .menu-meta:before {
+    white-space: pre;
+    content: "     //     "; }
+  /* line 34, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .navigation .menu-meta:last-child:before {
+    content: "";
+    content: none; }
+
+/* line 39, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.menu-meta {
+  font-family: "Archivo Narrow", Verdana, sans-serif;
+  font-size: 0.9375em;
+  line-height: 2.4em; }
+  /* line 43, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .menu-meta li {
+    float: left;
+    text-transform: lowercase; }
+
+/* line 49, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.menu-meta-textual li:before {
+  white-space: pre;
+  content: " · "; }
+/* line 52, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.menu-meta-textual li:first-child:before {
+  content: "";
+  content: none; }
+/* line 55, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.menu-meta-textual a {
+  color: #231f20;
+  text-decoration: none; }
+  /* line 58, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .menu-meta-textual a:hover, .menu-meta-textual a.active {
+    color: #e34c4c;
+    text-decoration: none;
+    border: 0 none; }
+
+/* line 63, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.menu-meta-visual {
+  margin-top: 0.3em; }
+  /* line 65, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .menu-meta-visual li {
+    margin-right: 0.5em; }
+
+/* line 68, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.pinterest-menu {
+  background: url("../images/pinterest_menu.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .pinterest-menu:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAoJJREFUeNqkVc8vA0EY3Zmd7S5BtoK2iR8nROLg16UHF1c3Dvxv/gkXjj02aUVFEwmpCCFBFKVVtjs74023Ya1aKzbNZtJ88+Z9771vljS3tuTbm/a/h1gWk82mbLX+CaQJwTRKoyo8T3qeJqVaU0p0vXs9pSwCAj+STLJ0mtg21uLhQdzciEaDGIZGSKi8OxCapUNDiWyWzcxo7LNGvry4pZJbKKCXELVuQK7LJifN1VXS2wsK/PRUVquaYeijo/r0dGJ5maZSzva26jfAKwwkgTIxYa2v40BnZ8c9OACuBmkYw5rm89bmJpuaEouLrUKBJBKfKn2FkYQQI5sFilssogV9bMza2DAWFgiUtixRrbr5vDp/bo6YZseELowANDCAFjTO3f19KG2trZH+fsDxSgXUQMG7uoLwdHCQ2ra4u/tQkIbigGMhh7i/h0d6JgMU//+OHHhzrgKBRU9PkNG3ULQ3SOyUEnr5pd71tXx9VTbhpL4+ZX+b/pckhXIFg6Xj6CMjaFDc3sp6XQGdnPjbJOc0k1GHua5sNIIJCAOJer2Vy8EmNjurzLIsZMq7uCDQAvk0TWN+XkGfn6N3VfCT/aDNDw8Vr6cnfXxcGSwETaf58THkS6ys0OFhsIP3MZLNmFepQCBzacmniVjxszOaTCLuKrB7e+LysqNU9IgAC73ANbWtWIQuyDqIQDXEgpfLwbmJBII7to2wYMmPjkQuR9pr+fwMyf4ytJ6np1I4VtZq4vFRuYm3f5MExiIGI6iOvKGvchkJUtPw20MjLj2EiJdKIVH/BoQRFbWas7vbCXSM50fXBIYTgxKPTpsRqruzIsHg/n754xqMST76c/QuwAD0dTRZ+dTN/AAAAABJRU5ErkJggg=='); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .pinterest-menu a {
+    color: transparent;
+    display: block; }
+
+/* line 71, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.facebook-menu {
+  background: url("../images/facebook_menu.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .facebook-menu:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYZJREFUeNq8lbuuwjAMhuOQtlwlxMLCyg4TAxKvwMjDsbIz8gJMrAxMCDGAKgbEAOXSEh+ngXPQoS2pKpGhQxt/8f/bTsEbDvFyYdkW5PMCPQ9vt4wgJqVgnH/YdL9jEDCAx+EiKoRzkQxB3+fVqt1uQ6XCEAnnz2Zyt2O53L+dIjkXXqvlBwNi/b4LFgt0XUgFQimdXu+P4vuaHrlZJPgHhUKu0QiReJ1M7qsVsywqjrIpBUgZC8qXECQ3GzwcmHb6abwBiOJJCMVoUCgTQ2lgWcYg8rhet7pdAkGppFOzOx08HumNP5+r1EzMpsOhXBbN5qtG0Wo9qrZc4n7/DuJxTseW8nyO7OGIjKgo0nXPoxE4jtPvg22T2Nt0iqcTWaaehiASgtcrrtfKIJ2alMoaUiREGrN14SngpV9UXo7zbs0nj9Kv74CoG58NmQlEDcXoJtKWfU1a/NBSswTBZTxWlaJBi2kfs+mnod9u9cWocIkCRcI0hN+F6eUPxeLn+9/gd/QjwADEM6hGU+tj3QAAAABJRU5ErkJggg=='); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .facebook-menu a {
+    color: transparent;
+    display: block; }
+
+/* line 74, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.instagram-menu {
+  background: url("../images/instagram_menu.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .instagram-menu:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAjRJREFUeNqkVctK7EAQTXdXdxIVFXyNgjKCoAsFBUEGFFcqguBKFPw0f8Cls/YBbkRd6EIRETcqDCKKojh30pnuvhVfSSaZO+QaQugkXadOnaqckPLGhqlUrN8dxHHAlMtGyl8CWVqDRWl4b0xGJuRrQSnEXjCWlcjPEkIujDnLy7SjwwJoQA2JKIWCeMWifnr6TB9jRLu7EULd3NSlhhR8H4FoVxft7Y2mhJpU6vr6z9YWse1UFOTLhobU7S1tbXVWVqLEae1uSokQXydA2AG8as0GBuy5OTExkcwCdYXAElyXj41hMJag7++r5+dYtdzfDxi1tDQC+shsPI/l887SEkKouztLShgd5YWC3N2Ve3uGkCSpBBBjhHPa1+euriIFb2fHvL4Gz4Xgk5P24iLqWD09tQD+BYQdhZERrIU0NVWvrirFIs3lxMyMZdvq4sI/PMQ09sKCKBQQNzpECUZYF+ekrQ3HBLUg7e3u+jr5kIOPj1c2N/3jY1xg72umMa1rn4Dv7+btjeVyJCIqzectz9PPz6kh6UA4R8R1gxilQvSHB5SGNDdnAEJRYHhYl0re9nbATkr/5MQ/O2P9/aynJzWi7hzx6WlVKvkHB9XLS5xM/fiI2on5+WS/GgBh45y1Nf/oKPj0tOaDg3xqinZ21tsP6f7y7XtidraxGaUAobTxpoYBSWNJnyPcrTX6SyZv0y8vP/tjjAKXyuS2iPJdIMQYZrXaqPljd2L+/7+/o78CDAAlKOPlAZuuvQAAAABJRU5ErkJggg=='); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .instagram-menu a {
+    color: transparent;
+    display: block; }
+
+/* line 77, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.rss-menu {
+  background: url("../images/rss_menu.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .rss-menu:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAvZJREFUeNqkVclKK0EU7aoeMghqjDguguNCUYgLBRciOIE7N+78kvcZLt2JWwURd4JbhYiIBnSh4mxEo8aYqbuq3qlUJ+k48HxYNIHuuvfWueecWyGZpSWRy2m/W8TvN0QmIwqFXxbSODc0SivvQuCTRoj7/HxRalRVsSwSCGi2LTHm84IxgmMM4ydFK4WEbZv9/b6pKeSLbFakUvz+nl1c8JsbnskQlNP1HxUqvhmaaRI8fr8WCumRiDkywp+enFjMOT3lLy/Y+g6dpxAh4v0dKDSfjwSDxOdz2w+HrZkZM5ezd3ftnR356Sto5H1xsSI/aCriAiJSX6+3txs9PbS1tRztnJzkNzdB4odaMr6qEOeuFZRqQqAXvasLxJHaWhXCzs5ya2tSXI/cKOTRnjHa3IwcMxrV29qIZSmMzvFxdnkZ+SpK7+y0xseF43yvGgo1NIBdBY0/PDjxuHN4KEVMp3Orq/65Ob27G5vm4KAdi4nXV2+D9DuD0ZYWa2LCv7Bg9PZK7hjLbWxIKbAsyxodFejOs/Q/s7NaESeBavk8xNbSadeZ+BgMGn198BS7uyOM8etrY2CA6DptamLn5xJUkSm4zPCiEG9v9t6ejY1AAECssTHFMeTnj4/s9pYlEiweN6JRHIsD8ldXpFSBfuhIbWCS7f397MoKTyTUgSBYjgul9tGRcglYl6iVYz4WchwSDvsmJ83hYVJTw5PJ/Po6xkWmRSI0EpEyJBKyfWSGQnjA3adCGNG6usD8PITzTU/jgYnQi3Nw4ApcZF3yqCgnhDY2limnXvn1jo6y8UAB6iLaKTtImUsIOMP1IRB90Rql6KVyVSWTYAoCaZmMikaaHGYcmUq5GTjpsyHBKL+8LGxtGUNDcGBhe1vDuOg6TCyen3EroCnVEU+nJU2wC84oDUr1rGFhIHEsftG8khZDV3YJvpfgu0OuwOLO/uhp3DjwpzcZoQpLOb+oTPnyKbVW7XTvnpe+f8Tg8scQfBH3/39HfwUYADSjdTcOUFGZAAAAAElFTkSuQmCC'); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .rss-menu a {
+    color: transparent;
+    display: block; }
+
+/* line 80, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.email-menu {
+  background: url("../images/email_menu.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .email-menu:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAT5JREFUeNrslDFuwjAUhkka0URhggUWJibEHZC4ABNC4kpcggnJgjNwCsTEARgQU6JYFU36uU9ClNpOB7pUtazIsv/3+b3fjoNsuWw8o4WNJ7U/DIq+UDudeDYLWq3asCrLitWq0tqeUZXnerNBVEtB5ivtZTDg62fdKCJ2gPr91+nU5LXdVkXhoeAAYp/ZYbsdLxYmQKkH1j3lu4+WU7Oy/BTn8cPCghuLborN87DXc51pZJ29Hg7vxyMxwpKMQDPJUjQc/iij8nJ52+2gxPN5czIBQWdQnk5MsoSgPiNEer0WSpAkbB52u1IsY1OjUggw8SEwuH9GotGI5CmhOR5Dsd+jT5ZUet3v7aWJLx6K2TlJTLJpitjpEctSkf8XMSwuQZo6PTJ3Wikxxd8wHrEbpDW9PJ//X8hfAX0IMAB0B8dd9P+JqAAAAABJRU5ErkJggg=='); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .email-menu a {
+    color: transparent;
+    display: block; }
+
+/* line 83, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+#branding {
+  float: right;
+  clear: both;
+  margin-bottom: 2.25em; }
+  /* line 87, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  #branding .logo {
+    width: 100%; }
+
+/* line 90, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.logo-link {
+  display: block;
+  background: url("../images/brudiy_logo.png") no-repeat center center;
+  color: transparent;
+  height: 95px;
+  width: 95px;
+  text-indent: -99999px\9;
+  text-decoration: none;
+  margin: auto; }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .logo-link a {
+    color: transparent;
+    display: block; }
+
+/* line 97, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.tagline {
+  font-family: "Bebas Neue", Helvetica, sans-serif;
+  font-size: 1.125em;
+  line-height: 1.33333em;
+  color: #231f20;
+  letter-spacing: 1px; }
+
+/* line 104, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.wrapper-wrapper {
+  margin: 0 2.25em; }
+
+/* line 107, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+#wrapper {
+  clear: both; }
+
+/* line 110, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.loading {
+  background: url("../images/ajax_loader.gif") no-repeat center 1em;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  opacity: 0.2;
+  position: relative;
+  z-index: 200; }
+
+/* line 116, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.more {
+  clear: both; }
+
+/* line 120, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.menu-main {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 0.66667em;
+  clear: both;
+  overflow: hidden;
+  font-size: 1.125em;
+  font-family: "Bebas Neue", Helvetica, sans-serif;
+  line-height: 2em;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+  /* line 131, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .menu-main li {
+    float: left; }
+    /* line 133, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .menu-main li:hover, .menu-main li.active {
+      background-color: #231f20; }
+      /* line 135, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main li:hover a, .menu-main li:hover .menu-main-fake-link, .menu-main li.active a, .menu-main li.active .menu-main-fake-link {
+        color: #fff; }
+    /* line 137, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .menu-main li:first-child {
+      background-image: url("../images/home.png");
+      background-repeat: no-repeat;
+      background-position: 10px 0.4em; }
+      /* line 141, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main li:first-child:hover {
+        background-image: url("../images/home_hover.png"); }
+      /* line 143, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main li:first-child a {
+        padding-left: 2.75em; }
+  /* line 145, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .menu-main a, .menu-main .menu-main-fake-link {
+    display: block;
+    padding: 0 1em;
+    color: #231f20;
+    text-decoration: none; }
+    /* line 150, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .menu-main a:hover, .menu-main .menu-main-fake-link:hover {
+      color: #fff; }
+
+/* line 155, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.menu-main-sub {
+  display: none;
+  position: absolute;
+  min-width: 10em;
+  font-size: 0.83333em;
+  font-family: "Archivo Narrow", Verdana, sans-serif;
+  text-transform: lowercase;
+  line-height: 2.4em;
+  z-index: 10; }
+  /* line 164, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .menu-main-sub li {
+    float: none;
+    background-color: #231f20;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    opacity: 0.8; }
+    /* line 168, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .menu-main-sub li:first-child {
+      background-image: none; }
+      /* line 170, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main-sub li:first-child:hover {
+        background-image: none; }
+      /* line 172, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main-sub li:first-child a {
+        padding-left: 0.4em; }
+    /* line 174, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .menu-main-sub li a {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 0 0.4em;
+      margin: 0 1.2em;
+      border-bottom: 1px solid #fff;
+      border-bottom: 0 none\9;
+      color: #fff; }
+      /* line 181, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main-sub li a:hover {
+        color: #e34c4c; }
+    /* line 184, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .menu-main-sub li:last-child a {
+      border-bottom: 0 none; }
+
+/* line 187, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.menu-main li:hover .menu-main-sub {
+  display: block; }
+
+/* line 190, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.content {
+  padding-top: 1.5em;
+  margin-bottom: 2.25em;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden; }
+  /* line 196, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .content.content-with-blocks {
+    padding-bottom: 0; }
+
+/* line 200, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.pagination {
+  margin-top: 1.5em;
+  clear: both;
+  overflow: hidden;
+  font-size: 1.125em;
+  line-height: 1.33333em;
+  font-family: "Bebas Neue", Helvetica, sans-serif;
+  text-align: center;
+  color: #231f20;
+  letter-spacing: 1px; }
+  /* line 210, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .pagination .disabled {
+    display: none; }
+  /* line 212, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .pagination a {
+    color: #231f20;
+    text-decoration: none; }
+    /* line 215, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .pagination a:hover {
+      color: #e34c4c; }
+
+/* line 218, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.previous_page, .next_page {
+  background-repeat: no-repeat; }
+
+/* line 221, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.previous_page {
+  float: left;
+  padding-left: 1em;
+  background-image: url("../images/left_arrow_black.png");
+  background-position: left center; }
+
+/* line 227, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+a.previous_page:hover {
+  background-image: url("../images/left_arrow_red.png"); }
+
+/* line 230, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.next_page {
+  float: right;
+  padding-right: 1em;
+  background-image: url("../images/right_arrow_black.png");
+  background-position: right center; }
+
+/* line 236, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+a.next_page:hover {
+  background-image: url("../images/right_arrow_red.png"); }
+
+/* line 239, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+#colophon-wrapper {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 3em;
+  padding-bottom: 1.5em;
+  border-top: 6px solid #635f5f;
+  background-color: #231f20;
+  overflow: hidden; }
+
+/* line 247, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.section-mini {
+  float: left;
+  width: 32%;
+  margin-left: 1.5%;
+  margin-bottom: 3em; }
+  /* line 252, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .section-mini:first-child {
+    margin-left: 0; }
+
+/* line 256, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.heading-mini {
+  margin-bottom: 0.48em;
+  line-height: 1.44em;
+  font-size: 1.5625em;
+  font-family: "Bebas Neue", Helvetica, sans-serif;
+  letter-spacing: 1px;
+  color: #fff; }
+
+/* line 265, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.content-mini {
+  line-height: 1.84615em;
+  font-size: 0.8125em;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #635f5f; }
+  /* line 270, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .content-mini a {
+    color: #fff;
+    text-decoration: none; }
+    /* line 273, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .content-mini a:hover {
+      text-decoration: underline; }
+
+/* line 277, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.copyright {
+  clear: both;
+  line-height: 2m 13px;
+  font-size: 0.8125em;
+  line-height: 1.84615em;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #635f5f;
+  text-align: center;
+  margin-bottom: 0.46154em; }
+  /* line 286, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .copyright a {
+    color: #fff;
+    text-decoration: none; }
+    /* line 289, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .copyright a:hover {
+      text-decoration: underline; }
+
+/* line 292, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.creative_commons {
+  margin-right: 0.75em;
+  vertical-align: bottom; }
+
+/* line 296, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.card {
+  position: relative;
+  width: 23.46939%;
+  margin-left: 2.04082%;
+  margin-bottom: 2.25em;
+  float: left; }
+  /* line 302, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .card:nth-child(4n+1) {
+    margin-left: 0; }
+  /* line 304, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .card a, .card a * {
+    text-decoration: none; }
+
+/* line 307, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.card-constrained {
+  width: 48%;
+  margin: 0 2% 0.75em 0; }
+  /* line 310, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .card-constrained:nth-child(2n+1) {
+    margin: 0 0 0.75em 2%; }
+
+/* line 313, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.card-link {
+  display: block; }
+
+/* line 316, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.card-thumbnail {
+  max-width: 100%;
+  display: block; }
+
+/* line 320, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.card-meta {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 4%;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  background: #fff url("../images/arrow_right.png") no-repeat bottom right;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8; }
+
+/* line 331, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.card-date {
+  line-height: 1.5em;
+  font-size: 1em;
+  font-family: "Archivo Narrow", Verdana, sans-serif;
+  color: #e34c4c; }
+
+/* line 338, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.card-heading {
+  line-height: 1.5em;
+  font-size: 1em;
+  font-family: "Archivo Narrow", Verdana, sans-serif;
+  color: #231f20; }
+  /* line 343, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .card-heading a {
+    color: #231f20;
+    text-decoration: none; }
+    /* line 346, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .card-heading a:hover {
+      text-decoration: underline; }
+
+/* line 350, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.heading {
+  margin-bottom: 0.48em;
+  line-height: 1.44em;
+  font-size: 1.5625em;
+  font-family: "Bebas Neue", Helvetica, sans-serif;
+  text-transform: uppercase;
+  color: #231f20;
+  letter-spacing: 1px;
+  clear: both; }
+  /* line 360, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .heading.heading-main {
+    margin-bottom: 0.66667em;
+    margin-top: 1.33333em;
+    line-height: 1em;
+    font-size: 2.25em; }
+
+/* line 366, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.heading-mark {
+  color: #e34c4c; }
+
+/* line 369, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.block-main {
+  width: 65.30612%;
+  padding-bottom: 2.25em;
+  margin-bottom: 1.5em;
+  margin-right: 6.12245%;
+  float: left; }
+
+/* line 376, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.post-comments-amount {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1.5em; }
+
+/* line 382, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.post-navigation {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 386, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.wysiwyg, .comment-content, .description, .nothing {
+  line-height: 1.6em;
+  font-size: 0.9375em;
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, sans-serif;
+  color: #3b3b3b; }
+  /* line 391, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg p, .comment-content p, .description p, .nothing p, .wysiwyg ul, .comment-content ul, .description ul, .nothing ul, .wysiwyg ol, .comment-content ol, .description ol, .nothing ol, .wysiwyg dl, .comment-content dl, .description dl, .nothing dl, .wysiwyg blockquote, .comment-content blockquote, .description blockquote, .nothing blockquote {
+    margin-bottom: 0.8em; }
+  /* line 393, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg h1, .comment-content h1, .description h1, .nothing h1 {
+    font-size: 1.33333em;
+    line-height: 1.2em;
+    margin-bottom: 0.6em; }
+  /* line 397, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg h2, .comment-content h2, .description h2, .nothing h2, .wysiwyg h3, .comment-content h3, .description h3, .nothing h3 {
+    font-size: 1.13333em;
+    line-height: 1.41176em;
+    margin-bottom: 0.70588em;
+    padding-top: 2.11765em; }
+    /* line 402, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .wysiwyg h2:first-child, .comment-content h2:first-child, .description h2:first-child, .nothing h2:first-child, .wysiwyg h3:first-child, .comment-content h3:first-child, .description h3:first-child, .nothing h3:first-child {
+      padding-top: 0; }
+  /* line 404, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg ul li:before, .comment-content ul li:before, .description ul li:before, .nothing ul li:before {
+    content: "· ";
+    margin-left: -0.4em; }
+  /* line 407, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg ol li, .comment-content ol li, .description ol li, .nothing ol li {
+    list-style-type: decimal; }
+  /* line 409, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg ul, .comment-content ul, .description ul, .nothing ul, .wysiwyg ol, .comment-content ol, .description ol, .nothing ol {
+    list-style-position: inside; }
+  /* line 411, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg li, .comment-content li, .description li, .nothing li {
+    margin-bottom: 0.2em;
+    margin-left: 2em;
+    list-style-position: outside; }
+  /* line 415, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg a, .comment-content a, .description a, .nothing a {
+    color: #7f7d7d;
+    text-decoration: none; }
+    /* line 418, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .wysiwyg a:hover, .comment-content a:hover, .description a:hover, .nothing a:hover {
+      text-decoration: underline; }
+  /* line 420, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg .pinterest, .comment-content .pinterest, .description .pinterest, .nothing .pinterest {
+    color: transparent; }
+  /* line 422, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg em, .comment-content em, .description em, .nothing em {
+    font-style: italic; }
+  /* line 424, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg strong, .comment-content strong, .description strong, .nothing strong {
+    font-weight: bold; }
+  /* line 426, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg img, .comment-content img, .description img, .nothing img {
+    margin: 0 auto 1.6em auto;
+    display: block;
+    max-width: 100%; }
+
+/* line 432, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.wysiwyg-sidebar img {
+  margin: auto; }
+/* line 437, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.wysiwyg-sidebar li {
+  font-family: "Archivo Narrow", Verdana, sans-serif;
+  color: #231f20;
+  line-height: 1.5em;
+  list-style-type: none;
+  margin-left: 0;
+  font-size: 1em; }
+  /* line 443, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg-sidebar li:before {
+    content: none; }
+  /* line 446, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .wysiwyg-sidebar li a {
+    color: inherit; }
+    /* line 448, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .wysiwyg-sidebar li a:hover, .wysiwyg-sidebar li a.active {
+      text-decoration: none;
+      color: #e34c4c; }
+
+/* line 453, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.subheading, .wysiwyg-sidebar p, .lp-heading {
+  margin-bottom: 0.75em;
+  line-height: 1.14286em;
+  font-size: 1.3125em;
+  font-family: "Bebas Neue", Helvetica, sans-serif;
+  letter-spacing: 1px;
+  color: #231f20; }
+
+/* line 464, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.post-meta-data {
+  font-family: "Archivo Narrow", Verdana, sans-serif;
+  color: #231f20; }
+  /* line 468, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .post-meta-data dt {
+    line-height: 1.5em;
+    font-size: 1em;
+    float: left;
+    clear: left;
+    margin-right: 0.5em;
+    font-family: "Archivo Narrow", Verdana, sans-serif; }
+  /* line 475, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .post-meta-data dd {
+    line-height: 1.5em;
+    font-size: 1em;
+    font-family: "Archivo Narrow", Verdana, sans-serif; }
+  /* line 479, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .post-meta-data a {
+    color: #e34c4c;
+    text-decoration: none; }
+    /* line 482, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .post-meta-data a:hover {
+      text-decoration: underline; }
+
+/* line 485, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.sidebar-block, .content-side {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 28.57143%;
+  margin-bottom: 1.5em;
+  float: right;
+  clear: right;
+  overflow: hidden; }
+
+/* line 493, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.sidebar-block {
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #ccc; }
+
+/* line 497, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.facebook-share, .lp-share-fb {
+  background: url("../images/facebook_share.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .facebook-share:hover, .lp-share-fb:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALtJREFUeNpiPHbkKAM1ABMDlQDVDGIhqEJUTExIWIiFGary6pUr5BikoKgoKSVJqdfY2dmJNIWAi9g5OODsB/fvf/36jaIwgoDnz54PaKwBYwoImFmY4SKycrIQxuNHj0kwiIODnY+fD1lERpaAQaR57dPHT6R57SNIw2M+oKtg7nryGOSQHz9+kmbQJ6BJHz/KyjHADcLlo0GcaUcNoiz3v3r56iPuFEiCQT/BgO5hxMLCQoUAYmEBCDAAM2k2YrgnYjYAAAAASUVORK5CYII='); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .facebook-share a, .lp-share-fb a {
+    color: transparent;
+    display: block; }
+
+/* line 502, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.twitter-share, .lp-share-tw {
+  background: url("../images/twitter_share.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .twitter-share:hover, .lp-share-tw:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAASlJREFUeNrsVF1LwzAU3WwgwcoGBQcty151j+r/f9t8VlFfVnE4cBAxkkKGgQ48rlJGEhOFPu4QaHq5Offj3KR/PZv3usBRryMciOIgHhMhdV1bxizL8qLAxpjP1csKG8pYpdSvRDgwnvDH+4d9rsFweDY9b/9ORyN8ykUZKi09SYGLq0swtsa8yP9dmnyXY85RHVKoVCWE2GhNKbXc1q/rNyFCRAkhWmsktatogOWNv93WEdUQvGEJQ6kqQvQhJTKKEm0cH5sIYj0tSlf+faA7roNnII0xARZQNHMUJ4Lr3c2tJUqL5fPSG8lWDbP3bU0SSpm3ainln+YIqvEJdwcHCSKXQO+IewALE3CcpozRRmloFG6//9ICeofDw/ZDhIvewfNIyJcAAwDkPocl5kw7qgAAAABJRU5ErkJggg=='); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .twitter-share a, .lp-share-tw a {
+    color: transparent;
+    display: block; }
+
+/* line 507, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.pinterest-share, .lp-share-pn {
+  background: url("../images/pinterest_share.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .pinterest-share:hover, .lp-share-pn:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYNJREFUeNq0VE1Lw0AQrXag0EADkazUU4opfjRX9f9D9ayiUi8mWGgkwZUsRFzowdedWgJpm37EOSybncybeW9n5+BueNuoww4bNVltQLTGZ1mWc+S0LYualBv7knI6nW4BBAiv1+vYncUJ74EShVGaJBsBAeUyGBCR1jqeTPL8G4etVqt70oXL7/v4LGMtATq7OAcKiLw8PReJIBgux3G8nqeyDGnWie0KgeSIBwo2iBwEATbsjd7CWXIiaFdxa/xHmqTAOu37yA91xLFgrzZmJLMrgHBBWFE5i1UmzmT5t+o+ahItYmDyUxavYqOG1PoHqxAzLkoppgPh58SduTSLk5VA4/cxCuGuYY2L5bh/YkkpKyvSj/cPURgChVlAfjJM0UdckcoUi1jRR6YPY1fMkwPx6uYah1wgSL2ORlu8NduwQ3JEusLl5vqIY+RY+txWArUNL3CAamC6+xhhgbJM1TCPoEtZ1F2A+GXtCwRRy82yC9AmAv/P8Oeu3XfyE/0KMABDF78gvZTpeAAAAABJRU5ErkJggg=='); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .pinterest-share a, .lp-share-pn a {
+    color: transparent;
+    display: block; }
+
+/* line 512, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.email-share {
+  background: url("../images/email_share.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .email-share:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAS1JREFUeNrklMFrwjAUxp0GMkhJoWChOyutOtT//zw9z6Gb0oo7rdCxgEIPhQ72rYEwa5N46GmGENr05Zf3fS/N3fJp0WmjdTsttX8MImcvhIwfJ4wx67I8z1+eV9qMyrJ8XW8QZKUgzCTN8zyMZpaiyOBmEHNYGEXIa/e2xWig/DrgMJPZ3OWD4aAoCiyosc4oFz42VK3v+2DJZYplpmjLDxa6YimxnHNdTUnj7GeWoVNKVSIQy11XCJF+pMFDcFVGQCRxgp2n85nUiIaHMAox+X44IMCekaLAC5xPCKT0XhZBGoQEEWABiS+BzRVF1bF29CULSrXSQIEvfykNO1csjKfjUQvC53AUGSg1llYaCryPk54NhPZdnQmT2dY/9havWnKFtfZ7lpAfAQYAUTG1O/IeeJwAAAAASUVORK5CYII='); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .email-share a {
+    color: transparent;
+    display: block; }
+
+/* line 518, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.pinterest-wrapper {
+  position: relative;
+  text-align: center; }
+
+/* line 522, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.pinterest-hover {
+  display: none;
+  position: absolute;
+  left: 43%;
+  top: 15px;
+  left: 15px;
+  background: url("../images/pinit.png") no-repeat center center;
+  color: transparent;
+  height: 101px;
+  width: 101px;
+  text-indent: -99999px\9; }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .pinterest-hover a {
+    color: transparent;
+    display: block; }
+
+/* line 530, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.list-images-item, .lp-share-list li {
+  float: left;
+  margin: 0 0.5em 0.75em 0; }
+
+/* line 537, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.item-input, .lp-share-lk {
+  clear: both; }
+  /* line 539, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .item-input input, .lp-share-lk input {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 1.5em;
+    border: 1px solid #ccc;
+    line-height: 1.5em;
+    font-size: 1em;
+    font-family: "Archivo Narrow", Verdana, sans-serif;
+    color: #7f7d7d; }
+
+/* line 548, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.lp-share-lk {
+  clear: none; }
+
+/* line 553, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.permalink, .lp-share-lk input {
+  padding-left: 25px;
+  background: url("../images/permalink.png") no-repeat 5px center;
+  letter-spacing: 1px; }
+
+/* line 560, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.comment {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1.5em; }
+  /* line 565, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .comment:last-child {
+    padding-bottom: 0;
+    border-bottom: 0 none;
+    margin-bottom: 0; }
+
+/* line 571, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.comment-data {
+  font-size: 1em;
+  line-height: 1.5em;
+  font-family: "Archivo Narrow", Verdana, sans-serif;
+  color: #7f7d7d; }
+  /* line 576, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .comment-data a {
+    color: #e34c4c;
+    text-decoration: none; }
+    /* line 579, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .comment-data a:hover {
+      text-decoration: underline; }
+
+/* line 585, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.description-spaced, .nothing {
+  margin-bottom: 1.6em; }
+
+/* line 589, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.notice, .lp-note {
+  margin-bottom: 1.6em;
+  clear: both;
+  font-size: 0.9375em;
+  line-height: 1.6em;
+  font-family: "Archivo Narrow", Verdana, sans-serif; }
+
+/* line 599, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.label, .lp-label {
+  display: none;
+  font-size: 0.9375em;
+  line-height: 1.6em;
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, sans-serif; }
+
+/* line 607, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.no-placeholder label {
+  display: block; }
+
+/* line 610, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.field-group, .lp-form {
+  margin-bottom: 0.75em; }
+
+/* line 616, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.field, .lp-field {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 0.5em;
+  border: 1px solid #ccc;
+  margin-bottom: 0.75em;
+  line-height: 1.5em;
+  font-size: 1em;
+  height: 1.5em;
+  font-family: "Archivo Narrow", Verdana, sans-serif;
+  color: #231f20; }
+
+/* line 631, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.field-tall {
+  height: auto; }
+
+/* line 635, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.button, .lp-button {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0 none;
+  height: 1.42857em;
+  font-size: 1.3125em;
+  line-height: 1.42857em;
+  padding: 0 1em;
+  margin-bottom: 0.28571em;
+  float: right;
+  font-family: "Bebas Neue", Helvetica, sans-serif;
+  color: #fff;
+  letter-spacing: 1px;
+  background-color: #e34c4c;
+  cursor: pointer; }
+  /* line 649, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .button:hover, .lp-button:hover {
+    color: #fff;
+    background-color: #000;
+    cursor: pointer; }
+
+/* line 653, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.button-spaced, .lp-button {
+  margin-bottom: 0.85714em; }
+
+/* line 658, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.button-post-aside {
+  float: none;
+  margin-top: 0.85714em; }
+
+/* line 662, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.link-post-aside {
+  text-decoration: none; }
+
+/* line 665, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.link-top {
+  background: url("../images/up.png") no-repeat center center;
+  color: transparent;
+  height: 24px;
+  width: 24px;
+  text-indent: -99999px\9;
+  display: block;
+  position: fixed;
+  right: 0.5em;
+  bottom: 2em; }
+  /* line 8, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .link-top:hover {
+    color: transparent;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAaFJREFUeNrU1UuPwVAUAOD29pYSxHSGxCusLC0l/BM/wM7GohIiEmEl+DV+gthaW9hIZOIxE4+i9HHnNDVmDDUynY2b7pr79Z5zzzmlX7NZTRQpawu5XFhdLMhuZxEiioJojCnLCxBE/dN6SEjT9McqpKoUw9AcR2T575C+mWGei0V/u40DgdtVgm4ocKmgOFIpNhr11Wo4HL5hXYfI4aArpZIjndY2G3U+B8VXr+vWdnsvRPZ75PEcFVF8bzSmgiCPRoZli8evngtdKjgY9DeboKiz2axQ2Ha7yng8zeelfh8sf6sFwV6eC/1oGcbrhXRAUnSlXN4PBsjppO12ONpbtQoW7XTygsDGYkSSTCBC4HnK5XAkok6noMjDISjHbrLZNEkyLAj8pVrFoRB82CQ0hkE8r0wms0oFFNrhOOtMlj1ZEKM9kYA7+Xo7zmS09fpUxMjtBg7ignDMLpTheS6Z3PV6eqaQfhTYdT5DENJWK0KImXKMcbkUOx3EcYZirIthBA3xa19BBj5z99hj5E7oey1YGf4YSlmzPP/hd/QhwACb78mWR9LBbQAAAABJRU5ErkJggg=='); }
+  /* line 11, /home/marc/projects/personal_webs/brudiy/source/stylesheets/helper.sass */
+  .link-top a {
+    color: transparent;
+    display: block; }
+
+/* line 673, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.errorExplanation, .lp-message-error {
+  margin-bottom: 1.6em;
+  font-size: 0.9375em;
+  line-height: 1.6em;
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, sans-serif;
+  color: red; }
+  /* line 679, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .errorExplanation li, .lp-message-error li {
+    list-style-position: inside;
+    list-style-type: disc; }
+
+/* line 686, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.flash, .lp-message-success {
+  margin-bottom: 1.6em;
+  font-size: 0.9375em;
+  line-height: 1.6em;
+  font-family: "Titillium Web", "Helvetica Neue", Helvetica, sans-serif; }
+
+/* line 692, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.flash-notice, .lp-message-success {
+  color: green; }
+
+/* line 699, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.banners {
+  overflow: hidden;
+  padding-bottom: 5.25em; }
+
+/* line 703, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.banner-wrapper {
+  position: relative;
+  float: left;
+  width: 32%;
+  margin-left: 1%; }
+  /* line 708, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .banner-wrapper:first-child {
+    margin-left: 0; }
+
+/* line 711, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.banner {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+  /* line 713, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .banner img {
+    max-width: 100%;
+    z-index: -1;
+    position: relative; }
+
+/* line 718, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.banner-go {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  background: #fff url("../images/arrow_right.png") no-repeat center center;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  color: transparent;
+  text-indent: -99999px\9; }
+
+/* line 729, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.flexslider {
+  margin-bottom: 4.5em;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+/* line 733, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.slide-item {
+  position: relative; }
+
+/* line 736, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.slide-text {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.625em 0;
+  padding-left: 2.5em;
+  padding-right: 0.625em;
+  width: 27.5em;
+  position: absolute;
+  right: 0;
+  bottom: 1.875em;
+  background-color: #000;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8; }
+
+/* line 749, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.slide-heading {
+  line-height: 1;
+  font-size: 1.5625em;
+  font-family: "Bebas Neue", Helvetica, sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 1px; }
+
+/* line 758, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+.slide-subheading {
+  font-family: "Archivo Narrow", Verdana, sans-serif;
+  font-size: 0.8125em;
+  font-weight: bold;
+  line-height: 1.84615em;
+  color: #fff;
+  text-transform: uppercase; }
+
+/*Fix flexslider font */
+@font-face {
+  font-family: "flexslider-icon";
+  src: url("/javascripts/woothemes-FlexSlider-ca347d4/fonts/flexslider-icon.eot");
+  src: url("/javascripts/woothemes-FlexSlider-ca347d4/fonts/flexslider-icon.eot?#iefix") format("embedded-opentype"), url("/javascripts/woothemes-FlexSlider-ca347d4/fonts/flexslider-icon.woff") format("woff"), url("/javascripts/woothemes-FlexSlider-ca347d4/fonts/flexslider-icon.ttf") format("truetype"), url("/javascripts/woothemes-FlexSlider-ca347d4/fonts/flexslider-icon.svg#flexslider-icon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "flexslider-icon";
+  src: url("../fonts/flexslider-icon/flexslider-icon.eot");
+  src: url("../fonts/flexslider-icon/flexslider-icon.eot?#iefix") format('embedded-opentype'), url("../fonts/flexslider-icon/flexslider-icon.woff") format('woff'), url("../fonts/flexslider-icon/flexslider-icon.ttf") format('truetype'), url("../fonts/flexslider-icon/flexslider-icon.svg#flexslider-icon") format('svg'); }
+@media (max-width: 480px) {
+  /* line 780, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .card {
+    width: 47.91667%;
+    margin-left: 2.08333%;
+    margin-bottom: 0.75em;
+    float: left; }
+    /* line 785, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .card:nth-child(n+1) {
+      margin-left: 2.08333%; }
+    /* line 787, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .card:nth-child(2n+1) {
+      margin-left: 0; } }
+@media (max-width: 710px) {
+  /* line 780, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .card {
+    width: 32.39437%;
+    margin-left: 1.40845%;
+    margin-bottom: 0.75em;
+    float: left; }
+    /* line 785, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .card:nth-child(n+1) {
+      margin-left: 1.40845%; }
+    /* line 787, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .card:nth-child(3n+1) {
+      margin-left: 0; } }
+@media (max-width: 500px) {
+  /* line 792, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .navigation {
+    margin-bottom: 0.75em;
+    overflow: hidden; }
+    /* line 795, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .navigation .menu-meta:before {
+      content: " // "; }
+
+  /* line 798, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .menu-meta-visual li {
+    margin-right: 0.2em; }
+
+  /* line 801, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  #branding {
+    float: none;
+    text-align: center; }
+
+  /* line 805, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .content {
+    padding-top: 0.75em;
+    margin-bottom: 0.75em;
+    border: 0 none; }
+
+  /* line 810, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .flexslider {
+    display: none; }
+
+  /* line 813, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .nav-main-menu {
+    width: 100%;
+    min-height: 2.25em;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    overflow: visible;
+    background: #fff url("../images/menu_icon.png") no-repeat left center; }
+    /* line 821, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .nav-main-menu:hover, .nav-main-menu.open {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAcCAYAAADr9QYhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAKhJREFUeNpi/P//P8NgAUwMgwgw4guZlIQEGFMFiPlp6I6nQPyCBWihKJDRC8QhQLwDiAvmLFjwCEnhZCDOoXGg/AL5nQVI5ANxLFQwEIi/AHEclK9FB4eAABsQdxFKM3/pnYAnAvFuKP8sENcjyd8E4il0cAfI05XEJmB1IOahoWNegBIx42g5M1rojRZ6o4XeaKE3Ws6MFnqjhd5ooTda6I2wcgYgwACa/GgzjSXBTAAAAABJRU5ErkJggg=='); }
+    /* line 824, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .nav-main-menu:hover .menu-main {
+      display: block; }
+
+  /* line 828, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .menu-main {
+    display: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    top: 2em;
+    width: 100%;
+    z-index: 10; }
+    /* line 835, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .menu-main li {
+      float: none;
+      background-color: #fff; }
+      /* line 838, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main li:first-child {
+        background-image: none; }
+        /* line 840, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+        .menu-main li:first-child:hover, .menu-main li:first-child:active {
+          background-image: none; }
+        /* line 842, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+        .menu-main li:first-child a {
+          padding: 0 1em; }
+      /* line 844, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main li a {
+        border-bottom: 1px solid #ccc; }
+
+  /* line 847, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .menu-main-sub {
+    position: static; }
+    /* line 849, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .menu-main-sub li {
+      background-color: #fff;
+      filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+      opacity: 1; }
+      /* line 852, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main-sub li a {
+        color: #231f20 !important; }
+        /* line 854, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+        .menu-main-sub li a:hover, .menu-main-sub li a:active {
+          color: #fff !important; }
+      /* line 856, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+      .menu-main-sub li:hover {
+        background-color: #231f20; }
+
+  /* line 859, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .section-mini {
+    float: none;
+    width: auto;
+    margin-bottom: 0.75em; }
+
+  /* line 864, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .block-main {
+    margin-right: 0;
+    padding-bottom: 0.75em;
+    border-bottom: 1px solid #ccc;
+    float: none;
+    width: auto; }
+
+  /* line 871, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .sidebar-block {
+    float: none;
+    width: auto; }
+
+  /* line 875, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .item-input input, .lp-share-lk input {
+    width: auto;
+    min-width: 70%; }
+
+  /* line 879, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .card {
+    width: auto;
+    max-width: 230px;
+    margin: auto auto 0.75em auto;
+    float: none; }
+    /* line 884, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .card:nth-child(n + 1) {
+      margin-left: auto; }
+
+  /* line 887, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .banners {
+    padding-bottom: 0; }
+
+  /* line 890, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .banner-wrapper {
+    width: 100%;
+    margin: 0 auto 1.5em auto; }
+    /* line 893, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+    .banner-wrapper img {
+      display: block;
+      margin: auto; }
+
+  /* line 897, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .copyright {
+    margin-top: 1.84615em; }
+
+  /* line 900, /home/marc/projects/personal_webs/brudiy/source/stylesheets/style.sass */
+  .link-top {
+    display: none; } }
