@@ -3,17 +3,17 @@
   <channel>
     <title>BruDiy</title>
     <description>Dissenys ecològics i moderns per crear tu mateix</description>
-    <guid>http://brudiy.com/</guid>
-    <link href="http://brudiy.com/"/>
-    <link href="http://brudiy.com/ca/blog/feed.rss" rel="self"/>
+    <guid>http://www.brudiy.com/</guid>
+    <link href="http://www.brudiy.com/"/>
+    <link href="http://www.brudiy.com/ca/blog/feed.rss" rel="self"/>
     <updated>2014-12-22T01:00:00+01:00</updated>
     <author>
       <name>Anna Llopis</name>
     </author>
     <item>
       <title>Avet origami</title>
-      <link rel="alternate" href="http://brudiy.com/ca/blog/posts/avet-origami/"/>
-      <guid>http://brudiy.com/ca/blog/posts/avet-origami/</guid>
+      <link rel="alternate" href="http://www.brudiy.com/ca/blog/posts/avet-origami/"/>
+      <guid>http://www.brudiy.com/ca/blog/posts/avet-origami/</guid>
       <pubDate>2014-12-22T01:00:00+01:00</pubDate>
       <author>
         <name>Article Author</name>
@@ -51,8 +51,8 @@
     </item>
     <item>
       <title>Halloween... Esquelet &amp; Imant</title>
-      <link rel="alternate" href="http://brudiy.com/ca/blog/posts/esquelet-imant/"/>
-      <guid>http://brudiy.com/ca/blog/posts/esquelet-imant/</guid>
+      <link rel="alternate" href="http://www.brudiy.com/ca/blog/posts/esquelet-imant/"/>
+      <guid>http://www.brudiy.com/ca/blog/posts/esquelet-imant/</guid>
       <pubDate>2014-10-22T02:00:00+02:00</pubDate>
       <author>
         <name>Article Author</name>
@@ -89,8 +89,8 @@ Trobar pedres planes a on sigui :). Potser pots aprofitar una excursió el cap d
     </item>
     <item>
       <title>Mirall Ull de bou</title>
-      <link rel="alternate" href="http://brudiy.com/ca/blog/posts/mirall-ull-de-bou/"/>
-      <guid>http://brudiy.com/ca/blog/posts/mirall-ull-de-bou/</guid>
+      <link rel="alternate" href="http://www.brudiy.com/ca/blog/posts/mirall-ull-de-bou/"/>
+      <guid>http://www.brudiy.com/ca/blog/posts/mirall-ull-de-bou/</guid>
       <pubDate>2014-07-07T02:00:00+02:00</pubDate>
       <author>
         <name>Article Author</name>
@@ -122,8 +122,8 @@ Trobar pedres planes a on sigui :). Potser pots aprofitar una excursió el cap d
     </item>
     <item>
       <title>Niu de Bombons</title>
-      <link rel="alternate" href="http://brudiy.com/ca/blog/posts/niu-de-bombons/"/>
-      <guid>http://brudiy.com/ca/blog/posts/niu-de-bombons/</guid>
+      <link rel="alternate" href="http://www.brudiy.com/ca/blog/posts/niu-de-bombons/"/>
+      <guid>http://www.brudiy.com/ca/blog/posts/niu-de-bombons/</guid>
       <pubDate>2014-06-02T02:00:00+02:00</pubDate>
       <author>
         <name>Article Author</name>
@@ -156,8 +156,8 @@ Trobar pedres planes a on sigui :). Potser pots aprofitar una excursió el cap d
     </item>
     <item>
       <title>Mòbil d'Orenetes</title>
-      <link rel="alternate" href="http://brudiy.com/ca/blog/posts/mobil-d-orenetes/"/>
-      <guid>http://brudiy.com/ca/blog/posts/mobil-d-orenetes/</guid>
+      <link rel="alternate" href="http://www.brudiy.com/ca/blog/posts/mobil-d-orenetes/"/>
+      <guid>http://www.brudiy.com/ca/blog/posts/mobil-d-orenetes/</guid>
       <pubDate>2014-05-23T02:00:00+02:00</pubDate>
       <author>
         <name>Article Author</name>
@@ -212,8 +212,8 @@ Trobar pedres planes a on sigui :). Potser pots aprofitar una excursió el cap d
     </item>
     <item>
       <title>Test Marrameu</title>
-      <link rel="alternate" href="http://brudiy.com/ca/blog/posts/test-marrameu/"/>
-      <guid>http://brudiy.com/ca/blog/posts/test-marrameu/</guid>
+      <link rel="alternate" href="http://www.brudiy.com/ca/blog/posts/test-marrameu/"/>
+      <guid>http://www.brudiy.com/ca/blog/posts/test-marrameu/</guid>
       <pubDate>2014-02-16T01:00:00+01:00</pubDate>
       <author>
         <name>Article Author</name>
