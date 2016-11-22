@@ -6,15 +6,62 @@
     <guid>http://www.brudiy.com/</guid>
     <link href="http://www.brudiy.com/"/>
     <link href="http://www.brudiy.com/en/blog/feed.rss" rel="self"/>
-    <updated>2015-05-14T02:00:00+02:00</updated>
+    <updated>2016-11-22T00:00:00+00:00</updated>
     <author>
       <name>Anna Llopis</name>
     </author>
     <item>
+      <title>Cardboard Bear</title>
+      <link rel="alternate" href="http://www.brudiy.com/en/blog/posts/cardboard-bear/"/>
+      <guid>http://www.brudiy.com/en/blog/posts/cardboard-bear/</guid>
+      <pubDate>2016-11-22T00:00:00+00:00</pubDate>
+      <author>
+        <name>Article Author</name>
+      </author>
+      <description type="html">&lt;p&gt;&lt;img src="https://s-media-cache-ak0.pinimg.com/564x/37/23/7b/37237b8b3f16f45957bb59d867caa774.jpg" /&gt;
+&lt;img src="https://s-media-cache-ak0.pinimg.com/474x/e2/e7/f7/e2e7f7673d77b73052ce4bb214f872cb.jpg" /&gt;
+&lt;img src="https://s-media-cache-ak0.pinimg.com/564x/27/28/ef/2728ef88db38dea388b63c19137a3b99.jpg" /&gt;&lt;/p&gt;
+
+&lt;p&gt;When the winter arrives, the Brown Bear of the Pyrenees hides in its lair to hibernate during the coldest months of the year. This hibernation period starts between November and December, and ends between February and April, depending on weather conditions.&lt;/p&gt;
+
+&lt;p&gt;The hibernation of the bears consists of a state of dormancy or winter lethargy that causes their heart rate to fall from 40 or 50 to about 10 beats per minute; The breathing rate drops by half, and body temperature is reduced from 98-102°F to 87-95°F). In addition, unlike humans, bears do not lose bone mass even when they remain immobile for about five months. The bear stops eating and maintains the functional constants thanks to the energy provided by the fat reserves accumulated during the fall, during that time the bears increase their food intake and can double their body weight.&lt;/p&gt;
+
+&lt;p&gt;Bears are aware of their vulnerability during hibernation, so they dig their den or look for natural caves in the steepest and most mountainous places. The dens are hidden cavities and difficult to access where the females prepare a bed of grasses and twigs of bushes to be able to give birth to their young during that period of winter rest.&lt;/p&gt;
+
+&lt;p&gt;I created this project, Cardboard Bear, few months ago and I wanted to share it … So, let's go!&lt;/p&gt;
+
+&lt;h2 id="materials"&gt;MATERIALS&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tracing paper&lt;/li&gt;
+  &lt;li&gt;Pencil&lt;/li&gt;
+  &lt;li&gt;Recycled cardboard (the one of the boxes of cereals goes well. It will serve to create a "mold")&lt;/li&gt;
+  &lt;li&gt;Recycled cardboard (with a minimum thickness of 2mm)&lt;/li&gt;
+  &lt;li&gt;Scissors or cutter&lt;/li&gt;
+  &lt;li&gt;Brush (optional)&lt;/li&gt;
+  &lt;li&gt;Paintings (optional)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="step-by-step"&gt;STEP BY STEP&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Print the templates and trace each piece on the cardboard of the cereals box using a tracing paper. Cut out the pieces and number each one according to the numbering indicated by the image (each piece has a number, so you will not have problems knowing which piece should fit in each slot). These pieces will serve you as a "mold" to create as many cardboard bears as you want. It will not necessary to trace the templates every time you want to create one.&lt;/li&gt;
+  &lt;li&gt;Once we have our "mold" templates, use them to draw the pieces on a cardboard that you like. In this case the templates are designed to create a bear with a cardboard of 2mm of thickness for this reason the slots of each piece measure 2mm.&lt;/li&gt;
+  &lt;li&gt;Cut the pieces and place them on the table following the numbering.&lt;/li&gt;
+  &lt;li&gt;You can paint the pieces, on both sides, creating a unique and original design.&lt;/li&gt;
+  &lt;li&gt;Once the pieces are painted, it's time to mount the bear figure in 3D. It's easy and funny! ʕ•ᴥ•ʔ&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src="https://s-media-cache-ak0.pinimg.com/564x/50/83/11/508311816f4adc8b521004aae7f0c7a2.jpg" /&gt;
+&lt;img src="https://s-media-cache-ak0.pinimg.com/564x/52/32/d8/5232d8c5f2a0c35654dbd8b0b49b4061.jpg" /&gt;
+&lt;img src="https://s-media-cache-ak0.pinimg.com/564x/5e/14/54/5e1454ecc6b2e215c1308b4e63bdf491.jpg" /&gt;&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>Fishing Boats</title>
       <link rel="alternate" href="http://www.brudiy.com/en/blog/posts/fishing-boats/"/>
       <guid>http://www.brudiy.com/en/blog/posts/fishing-boats/</guid>
-      <pubDate>2015-05-14T02:00:00+02:00</pubDate>
+      <pubDate>2015-05-14T00:00:00+00:00</pubDate>
       <author>
         <name>Article Author</name>
       </author>
@@ -63,7 +110,7 @@
       <title>Owl Night Light</title>
       <link rel="alternate" href="http://www.brudiy.com/en/blog/posts/owl-night-light/"/>
       <guid>http://www.brudiy.com/en/blog/posts/owl-night-light/</guid>
-      <pubDate>2015-02-05T01:00:00+01:00</pubDate>
+      <pubDate>2015-02-05T00:00:00+00:00</pubDate>
       <author>
         <name>Article Author</name>
       </author>
@@ -111,7 +158,7 @@
       <title>Origami conifer</title>
       <link rel="alternate" href="http://www.brudiy.com/en/blog/posts/conifer-origami/"/>
       <guid>http://www.brudiy.com/en/blog/posts/conifer-origami/</guid>
-      <pubDate>2014-12-22T01:00:00+01:00</pubDate>
+      <pubDate>2014-12-22T00:00:00+00:00</pubDate>
       <author>
         <name>Article Author</name>
       </author>
@@ -150,7 +197,7 @@
       <title>Halloween... Magnet Skeleton</title>
       <link rel="alternate" href="http://www.brudiy.com/en/blog/posts/magnet-skeleton/"/>
       <guid>http://www.brudiy.com/en/blog/posts/magnet-skeleton/</guid>
-      <pubDate>2014-10-22T02:00:00+02:00</pubDate>
+      <pubDate>2014-10-22T00:00:00+00:00</pubDate>
       <author>
         <name>Article Author</name>
       </author>
@@ -187,7 +234,7 @@ Flat stones&lt;/li&gt;
       <title>Sailor Mirror</title>
       <link rel="alternate" href="http://www.brudiy.com/en/blog/posts/sailor-mirror/"/>
       <guid>http://www.brudiy.com/en/blog/posts/sailor-mirror/</guid>
-      <pubDate>2014-07-07T02:00:00+02:00</pubDate>
+      <pubDate>2014-07-07T00:00:00+00:00</pubDate>
       <author>
         <name>Article Author</name>
       </author>
@@ -221,45 +268,6 @@ the entire perimeter with the rope. So put a bit of glue on the section of the f
 have the glue gun plugged in, it will produce heat and the silicone rod will 
 melt. Therefore, put a sheet of paper underneath the glue gun to protect the table. Also, remember to unplug the glue gun when you have to interrupt your project from time to time. If you do not, you will have the risk of the silicone rods being used up completely, and the silicone glue gun will start to burn.&lt;/p&gt;
 &lt;p&gt;Feel free to share your Sailor Mirror, and send us some photos!We love the restyling!&lt;/p&gt;
-</description>
-    </item>
-    <item>
-      <title>Nest Packaging</title>
-      <link rel="alternate" href="http://www.brudiy.com/en/blog/posts/nest-packaging/"/>
-      <guid>http://www.brudiy.com/en/blog/posts/nest-packaging/</guid>
-      <pubDate>2014-06-02T02:00:00+02:00</pubDate>
-      <author>
-        <name>Article Author</name>
-      </author>
-      <description type="html">&lt;p&gt;&lt;img src="http://media-cache-ec0.pinimg.com/736x/8a/ed/1e/8aed1ef2bd4e1d45f5f969469501adf7.jpg" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="http://media-cache-ec0.pinimg.com/736x/d0/9a/08/d09a085b658cc14a529946d0ce557b09.jpg" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="http://media-cache-ec0.pinimg.com/736x/d5/88/e7/d588e75658cfa654eaa2b199f885ad16.jpg" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="http://media-cache-ec0.pinimg.com/736x/30/30/40/303040e4052a69e673b67e5ded57ddd1.jpg" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="http://media-cache-ec0.pinimg.com/736x/6d/d8/87/6dd887bafcc3d7f04684a104c11b026c.jpg" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="http://media-cache-ak0.pinimg.com/736x/ea/00/30/ea00301073b9cabacbafadc783c35d6a.jpg" /&gt;&lt;/p&gt;
-&lt;p&gt;Following the same topic on swallows of the past post &lt;a target="_blank" title="http://www.brudiy.com/blog/posts/movil-de-golondrinas" href="http://www.brudiy.com/blog/posts/movil-de-golondrinas"&gt;post anterior&lt;/a&gt; "Swallows Mobile", I will show you an easy project called “Nest Packaging”. It's about creating nest boxes to put delicious bombons into them. It could be an original gift for your guests and friends for those special events, wouldn't it?&lt;/p&gt;
-&lt;p&gt;To do this project you can use any patterned cardboard or you can decorate 
-one for yourself. I have designed, for this occasion, a pattern of swallows 
-downloadable &lt;a target="_blank" title="https://www.dropbox.com/s/2yvg215ulqnxfek/envoltorio_nido.pdf" href="https://www.dropbox.com/s/2yvg215ulqnxfek/envoltorio_nido.pdf"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;MATERIAL&lt;/p&gt;
-&lt;ul&gt;&lt;li&gt;patterned cardstock (not paper, cardboard thickness is better)&lt;/li&gt;
-&lt;li&gt;white tissue paper&lt;/li&gt;
-&lt;li&gt;scissors&lt;/li&gt;
-&lt;li&gt;double sided tape&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;STEP BY STEP&lt;/p&gt;
-&lt;p&gt;First, download the &lt;a target="_blank" title="https://www.dropbox.com/s/2yvg215ulqnxfek/envoltorio_nido.pdf" href="https://www.dropbox.com/s/2yvg215ulqnxfek/envoltorio_nido.pdf"&gt;template&lt;/a&gt; with the box design. You can choose to
-print just the box silhouette in a A4 sheet, or printing the patterned template 
-in a A4 cardstock (in this case, print in color).&lt;/p&gt;
-&lt;ol&gt;&lt;li&gt;Cut the box silhouette.&lt;/li&gt;
-&lt;li&gt;Fold strongly the four sides of the box bottom.&lt;/li&gt;
-&lt;li&gt;Then put the bombons wrapped in white tissue paper into the box.&lt;/li&gt;
-&lt;li&gt;Close the sides by overlapping one wing on top of the next one and so on until you get to the last one. Close the box by tucking in the last wing into the first wing.&lt;/li&gt;
-&lt;li&gt;To keep the sides closed, use a double sided scotch tape and make sure that it be invisible.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Now, you are ready to make an original and fun packaging to give bombons, candy or cookies...&lt;/p&gt;
-&lt;p&gt;We would love to see your Nest Packaging project! Please feel free to share 
-it, and send us some photos! :)&lt;/p&gt;
 </description>
     </item>
   </channel>

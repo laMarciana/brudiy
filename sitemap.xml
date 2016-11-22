@@ -1,272 +1,308 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.brudiy.com/blog/posts/movil-de-golondrinas/</loc>
-    <lastmod>2015-01-24T12:02:12+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/blog/posts/maceta-gatuna/</loc>
-    <lastmod>2015-01-30T13:15:00+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/blog/posts/luz-buho/</loc>
-    <lastmod>2015-02-05T13:29:46+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/blog/posts/espejo-ojo-de-buey/</loc>
-    <lastmod>2015-01-24T12:03:02+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/blog/posts/abeto-origami/</loc>
-    <lastmod>2015-01-24T12:04:15+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/blog/posts/barca-pesca/</loc>
-    <lastmod>2015-05-14T16:30:29+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/blog/posts/esqueleto-de-iman/</loc>
-    <lastmod>2015-01-24T12:03:51+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/blog/posts/bombones-en-un-nido/</loc>
-    <lastmod>2015-01-24T12:02:37+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/blog/posts/conifer-origami/</loc>
-    <lastmod>2015-01-24T12:04:20+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/blog/posts/sailor-mirror/</loc>
-    <lastmod>2015-01-24T12:03:09+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/blog/posts/nest-packaging/</loc>
-    <lastmod>2015-01-24T12:02:43+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/blog/posts/owl-night-light/</loc>
-    <lastmod>2015-02-05T13:29:37+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/blog/posts/magnet-skeleton/</loc>
-    <lastmod>2015-01-24T12:03:46+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/blog/posts/fishing-boats/</loc>
-    <lastmod>2015-05-14T16:30:43+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/blog/posts/plantpot-cat/</loc>
-    <lastmod>2015-01-30T13:21:37+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/blog/posts/swallows-mobile/</loc>
-    <lastmod>2015-01-24T12:02:18+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/ca/blog/posts/mobil-d-orenetes/</loc>
-    <lastmod>2015-01-24T12:02:24+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/ca/blog/posts/avet-origami/</loc>
-    <lastmod>2015-01-24T12:04:25+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
     <loc>http://www.brudiy.com/ca/blog/posts/niu-de-bombons/</loc>
-    <lastmod>2015-01-24T12:02:48+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/ca/blog/posts/barca-pesca/</loc>
-    <lastmod>2015-05-14T16:30:38+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/ca/blog/posts/esquelet-imant/</loc>
-    <lastmod>2015-01-24T12:03:59+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/ca/blog/posts/mirall-ull-de-bou/</loc>
-    <lastmod>2015-01-24T12:03:14+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>http://www.brudiy.com/ca/blog/posts/llum-mussol/</loc>
-    <lastmod>2015-02-05T13:29:29+01:00</lastmod>
+    <loc>http://www.brudiy.com/ca/blog/posts/barca-pesca/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/ca/blog/posts/mobil-d-orenetes/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/ca/blog/posts/test-marrameu/</loc>
-    <lastmod>2015-01-31T19:39:34+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>http://www.brudiy.com/pages/puntos-de-ganchillo/</loc>
-    <lastmod>2015-01-31T11:19:08+01:00</lastmod>
+    <loc>http://www.brudiy.com/ca/blog/posts/os-cartro/</loc>
+    <lastmod>2016-11-22T10:05:26+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/ca/blog/posts/llum-mussol/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/ca/blog/posts/avet-origami/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/ca/blog/posts/esquelet-imant/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/conifer-origami/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/cardboard-bear/</loc>
+    <lastmod>2016-11-22T10:05:09+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/fishing-boats/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/sailor-mirror/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/magnet-skeleton/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/owl-night-light/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/plantpot-cat/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/nest-packaging/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/swallows-mobile/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/movil-de-golondrinas/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/espejo-ojo-de-buey/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/maceta-gatuna/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/esqueleto-de-iman/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/abeto-origami/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/oso-carton/</loc>
+    <lastmod>2016-11-22T10:05:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/bombones-en-un-nido/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/barca-pesca/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/luz-buho/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/pages/ganchet-stitches/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/ca/pages/punts-de-ganxet/</loc>
-    <lastmod>2015-01-31T11:18:53+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/ca/pages/sobre-brudiy/</loc>
-    <lastmod>2015-01-31T11:18:33+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/pages/sobre-brudiy/</loc>
-    <lastmod>2015-01-31T11:18:43+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>http://www.brudiy.com/ca/subscripcio/</loc>
-    <lastmod>2015-01-31T11:19:14+01:00</lastmod>
+    <loc>http://www.brudiy.com/pages/puntos-de-ganchillo/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/subscription/</loc>
-    <lastmod>2015-01-31T11:19:14+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/suscripcion/</loc>
-    <lastmod>2015-01-31T11:19:14+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/pages/ganchet-stitches/</loc>
-    <lastmod>2015-01-31T11:19:03+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/pages/about-brudiy/</loc>
-    <lastmod>2015-01-31T11:18:37+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/ca/</loc>
-    <lastmod>2015-01-31T11:19:37+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/en/</loc>
-    <lastmod>2015-01-31T11:19:37+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/</loc>
-    <lastmod>2015-01-31T11:19:37+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
+    <loc>http://www.brudiy.com/ca/pages/sobre-brudiy/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/pages/about-brudiy/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/ca/subscripcio/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/subscription/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/suscripcion/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://www.brudiy.com/blog/categories/para-los-ninos/</loc>
-    <lastmod>2015-01-21T18:35:35+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/blog/categories/para-la-casa/</loc>
-    <lastmod>2015-01-21T18:35:35+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/blog/categories/ocasiones-especiales/</loc>
-    <lastmod>2015-01-21T18:35:35+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/categories/para-la-casa/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/en/blog/categories/for-home/</loc>
-    <lastmod>2015-01-21T18:35:35+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/en/blog/categories/special-events/</loc>
-    <lastmod>2015-01-21T18:35:35+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/en/blog/categories/for-kids/</loc>
-    <lastmod>2015-01-21T18:35:35+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>http://www.brudiy.com/ca/blog/categories/per-a-nens/</loc>
-    <lastmod>2015-01-21T18:35:35+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/ca/blog/categories/per-la-casa/</loc>
-    <lastmod>2015-01-21T18:35:35+01:00</lastmod>
+    <loc>http://www.brudiy.com/en/blog/categories/for-home/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>http://www.brudiy.com/ca/blog/categories/ocasions-especials/</loc>
-    <lastmod>2015-01-21T18:35:35+01:00</lastmod>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/ca/blog/categories/per-la-casa/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/ca/blog/categories/per-a-nens/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/ca/blog/categories/per-la-casa/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
