@@ -18,7 +18,8 @@
       <author>
         <name>Article Author</name>
       </author>
-      <description type="html">&lt;p&gt;&lt;img src="https://s-media-cache-ak0.pinimg.com/564x/37/23/7b/37237b8b3f16f45957bb59d867caa774.jpg" /&gt;
+      <description type="html">&lt;p&gt;&lt;img src="/images/blog/bear/01.jpg" /&gt;
+&lt;img src="https://s-media-cache-ak0.pinimg.com/564x/37/23/7b/37237b8b3f16f45957bb59d867caa774.jpg" /&gt;
 &lt;img src="https://s-media-cache-ak0.pinimg.com/474x/e2/e7/f7/e2e7f7673d77b73052ce4bb214f872cb.jpg" /&gt;
 &lt;img src="https://s-media-cache-ak0.pinimg.com/564x/27/28/ef/2728ef88db38dea388b63c19137a3b99.jpg" /&gt;&lt;/p&gt;
 
