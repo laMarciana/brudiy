@@ -43,6 +43,12 @@
     <priority>1</priority>
   </url>
   <url>
+    <loc>http://www.brudiy.com/ca/blog/posts/postals_nadal_hama/</loc>
+    <lastmod>2016-12-21T19:01:56+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
     <loc>http://www.brudiy.com/ca/blog/posts/avet-origami/</loc>
     <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -51,6 +57,12 @@
   <url>
     <loc>http://www.brudiy.com/ca/blog/posts/esquelet-imant/</loc>
     <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/en/blog/posts/xmas_hama_cards/</loc>
+    <lastmod>2016-12-21T19:02:08+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
@@ -135,6 +147,12 @@
   <url>
     <loc>http://www.brudiy.com/blog/posts/abeto-origami/</loc>
     <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://www.brudiy.com/blog/posts/postales_navidad_hama/</loc>
+    <lastmod>2016-12-21T19:02:17+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
@@ -253,6 +271,12 @@
     <priority>1</priority>
   </url>
   <url>
+    <loc>http://www.brudiy.com/en/blog/categories/for-kids/</loc>
+    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
     <loc>http://www.brudiy.com/en/blog/categories/for-home/</loc>
     <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -260,12 +284,6 @@
   </url>
   <url>
     <loc>http://www.brudiy.com/en/blog/categories/special-events/</loc>
-    <lastmod>2016-06-12T17:55:19+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>http://www.brudiy.com/en/blog/categories/for-kids/</loc>
     <lastmod>2016-06-12T17:55:19+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
